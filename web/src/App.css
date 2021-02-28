@@ -1,0 +1,52 @@
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.text {
+  display: flex;
+  justify-content: center;
+}
+.buttons {
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  flex-direction: row;
+}
+.buttonWrapper {
+  display: flex;
+  justify-content: space-between;
+  justify-content: center;
+}
+button {
+  padding: 5px;
+  margin-top: 5px;
+  width: 200px;
+}
+
+.charts {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.innerChartContainer {
+  display: flex;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (max-width: 850px) {
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .charts {
+    flex-direction: column;
+  }
+}

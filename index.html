@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>My Wasm Project</title>
+</head>
+
+<body>
+    <script type="module">
+        import { default as wasm, convert } from "./pkg/pipers.js";
+
+        wasm().then((module) => {
+            console.log(convert("32 | f | g(x)"));
+        });
+    </script>
+</body>
+
+</html>
