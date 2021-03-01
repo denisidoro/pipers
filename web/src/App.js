@@ -1,48 +1,74 @@
-import React, { h, render, Component, useState, useCallback, useEffect } from "react";
+import React, { Component, useState, useCallback, useEffect } from "react";
+import { MainContext, useValue, useMainContext } from './hooks/context'
 
-function Counter() {
-  const [wasm, setWasm] = useState(null);
-  const [value, setValue] = useState("");
 
-  useEffect(() => {
-    async function fetch() {
-      try {
-        const w = await import("pipers");
-        setWasm(w)
-      } catch (err) {
-        console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
-      }
-    }
-    fetch()
-  }, []);
+const exprs = [
+  ["simple pipe", "42 | f"],
+  ["input as first arg", "42 | f | g(3) | h"],
+  ["input as last arg", "42 | f | x -> g(3, x) | h"],
+  ["named variables", `x = 42 | f
+y = 53 | g(3)
+x + y | sum`],
+]
 
-  const convert = useCallback((x) => {
-    if (wasm != null) {
-      return wasm.convert(x)
-    } else {
-      return "loading..."
-    }
-  }, [wasm])
+function Example({ id }) {
+  const { convert } = useMainContext()
+  const [value, setValue] = useState(exprs[id][1])
 
-  const onChange = (event) => {
-    setValue(event.target.value)
-  }
+  const onChange = useCallback((event) => {
+    const v = event.target.value;
+    setValue(v)
+  }, [setValue, convert])
 
   return (
-    <div>
-      <textarea value={value} onInput={onChange} />
-      <div>
-        {convert(value)}
+    <section>
+      <div className="section-container">
+        <div className="meta-area">
+          <h2 className="section-title">{id + ". " + exprs[id][0]}
+            <code className="blue">place-items: center</code>
+          </h2>
+        </div>
+
+        <div className="ex-section ex1">
+          <textarea className="code-container" onChange={onChange} value={value} />
+          <div className="code-area">
+            <div className="code-container html">{convert(value)}</div>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    </section>
+  )
 }
 
-export default function App() {
+function Examples() {
   return (
     <div>
-      <h1>Hello, World!</h1>
-      <Counter />
+      {
+        exprs.map((value, index) => (<Example id={index} />))
+      }
     </div>
-  );
+  )
+}
+
+function Header() {
+  return (
+    <div class="meta">
+      <h1>Pipers</h1>
+      <p>
+        Use pipe expressions in your PromQL queries and more!
+      </p>
+    </div>
+  )
+}
+export default function App() {
+  const value = useValue()
+
+  return (
+    <MainContext.Provider value={value}>
+      <div>
+        <Header />
+        <Examples />
+      </div>
+    </MainContext.Provider >
+  )
 }
