@@ -1,7 +1,6 @@
 import React, { Component, useState, useCallback, useEffect } from "react";
 import { MainContext, useValue, useMainContext } from './hooks/context'
 
-
 const exprs = [
   ["simple pipe", "42 | f"],
   ["input as first arg", "42 | f | g(3) | h"],
@@ -17,6 +16,7 @@ function Example({ id }) {
 
   const onChange = useCallback((event) => {
     const v = event.target.value;
+    console.log({ v, c: convert(v) })
     setValue(v)
   }, [setValue, convert])
 

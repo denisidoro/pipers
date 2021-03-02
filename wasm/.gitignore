@@ -1,0 +1,10 @@
+/target
+**/*.rs.bk
+Cargo.lock
+bin/
+pkg/
+wasm-pack.log
+
+src/*.rs
+src/bin
+!src/lib.rs
