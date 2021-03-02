@@ -10,13 +10,13 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "3.4.0",
-    "pipers": "file:./pkg",
-    "deploy": "gh-pages -d build"
+    "pipers": "file:./pkg"
   },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
-    "test": "react-app-rewired test"
+    "test": "react-app-rewired test",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
