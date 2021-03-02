@@ -9,7 +9,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "3.4.0",
-    "pipers": "file:../pkg"
+    "pipers": "file:./pkg"
   },
   "scripts": {
     "start": "react-app-rewired start",

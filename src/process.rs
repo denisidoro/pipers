@@ -21,6 +21,7 @@ pub fn convert(txt: &str) -> String {
     }
 
     let output = state.get(FINAL_RESULT).unwrap();
+
     sanitize_output(output)
 }
 

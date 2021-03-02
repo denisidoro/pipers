@@ -156,7 +156,7 @@ section:nth-child(2n) .tab-area button.active {
 .code-area {
   display: grid;
   grid-template-rows: auto 1fr auto;
-  height: 400px;
+  height: 100px;
 }
 
 .code-container {
@@ -169,6 +169,11 @@ section:nth-child(2n) .tab-area button.active {
   border: 1px solid var(--blue);
   margin-top: -1px;
   font-size: 1.35rem;
+}
+
+.html {
+  height: 150px;
+  word-wrap: break-word;
 }
 
 .tab-area {
@@ -262,7 +267,7 @@ section:nth-child(2n) .tab-area button.active {
 
 @media screen and (min-width: 811px) {
   .ex-section {
-    height: 400px;
+    height: 200px;
   }
   
   .section-container {

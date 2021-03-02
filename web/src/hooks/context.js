@@ -13,7 +13,16 @@ export function useValue() {
         async function fetch() {
             try {
                 const w = await import("pipers");
-                setData(data => ({ ...data, convert: w.convert }))
+                const convert = (x) => {
+                    try {
+                        return w.convert(x)
+                    }
+                    catch (err) {
+                        console.log(err)
+                        return err.toString()
+                    }
+                }
+                setData(data => ({ ...data, convert }))
             } catch (err) {
                 console.error(`Unexpected error in loadWasm. [Message: ${err.message}]`);
             }
