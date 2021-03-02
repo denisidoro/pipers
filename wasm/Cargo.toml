@@ -1,0 +1,28 @@
+[package]
+name = "pipers"
+version = "0.1.0"
+authors = ["Denis Isidoro <denis_isidoro@live.com>"]
+edition = "2018"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+default = ["console_error_panic_hook"]
+
+[dependencies]
+wasm-bindgen = "0.2"
+lazy_static = "1.4.0"
+console_error_panic_hook = { version = "0.1.1", optional = true }
+wee_alloc = { version = "0.4.2", optional = true }
+
+[dependencies.regex]
+version = "1.3.0"
+default-features = false
+features = ["std", "unicode-perl"]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.2"
+
+[profile.release]
+opt-level = "s"

@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export PIPERS_HOME="$(cd "$(dirname "$0")/.." && pwd)"
+source "${DOTFILES}/scripts/core/main.sh"
+
+main() {
+    cd "${PIPERS_HOME}/web"
+
+    if ! [ -f "${PIPERS_HOME}/wasm/pkg/pipers.js" ]; then
+        "${PIPERS_HOME}/scripts/build-wasm"
+    fi
+    
+    mv "${PIPERS_HOME}/wasm/pkg" "${PIPERS_HOME}/web/pkg"
+    rm -rf "${PIPERS_HOME}/node_modules/pipers" &>/dev/null || true
+    yarn install 
+    yarn start
+}
+
+main "$@"
