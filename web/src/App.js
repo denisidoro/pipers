@@ -2,17 +2,24 @@ import React, { Component, useState, useCallback, useEffect } from "react";
 import { MainContext, useValue, useMainContext } from './hooks/context'
 
 const exprs = [
-  ["simple pipe", "42 | f"],
-  ["input as first arg", "42 | f | g(3) | h"],
-  ["input as last arg", "42 | f | x -> g(3, x) | h"],
-  ["named variables", `x = 42 | f
+  ["simple pipe", "pipes will turn into parentheses", "42 | f"],
+  ["input as first arg", "for functions with multiple args, the input will be passed as the first one", "42 | f | g(3) | h"],
+  ["input as last arg", "if you want to determine the arg position, use the x -> syntax", "42 | f | x -> g(3, x) | h"],
+  ["newlines", "you can use indented newlines to improve readability", `42 
+  | f 
+  | x -> g(3, x) 
+  | h`],
+  ["named variables", "you can split a expression into multiple named ones", `x = 42 | f
+
 y = 53 | g(3)
+
 x + y | sum`],
+  ["escaping", "if you need to use a | inside your expressions, escape it with \\", `53 | x -> g(x \\|\\| true)`],
 ]
 
 function Example({ id }) {
   const { convert } = useMainContext()
-  const [value, setValue] = useState(exprs[id][1])
+  const [value, setValue] = useState(exprs[id][2])
 
   const onChange = useCallback((event) => {
     const v = event.target.value;
@@ -25,7 +32,7 @@ function Example({ id }) {
       <div className="section-container">
         <div className="meta-area">
           <h2 className="section-title">{id + ". " + exprs[id][0]}
-            <code className="blue">place-items: center</code>
+            <code className="">{exprs[id][1]}</code>
           </h2>
         </div>
 
