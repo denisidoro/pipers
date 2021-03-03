@@ -38,4 +38,4 @@ cargo build --release
 
 E.g., in VSCode you can use the [Filter Text](https://marketplace.visualstudio.com/items?itemName=yhirose.FilterText) extension:
 
-IMAGE
+![Demo](https://user-images.githubusercontent.com/3226564/109806044-f9f08380-7c02-11eb-9429-92d26ee7084c.gif)
