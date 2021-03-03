@@ -4,11 +4,11 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pipers/168dd62f42d33cd0ca68.module.wasm"
   },
   {
-    "revision": "079fbe5aaf3628b275e271c4c4ec8fe0",
+    "revision": "cd36f9daf4c72a3bd5f42418784cbd7d",
     "url": "/pipers/index.html"
   },
   {
-    "revision": "fdbd34ff61d0c4b2c2f4",
+    "revision": "cb0269c82e5920a17c35",
     "url": "/pipers/static/css/main.64bde5dd.chunk.css"
   },
   {
@@ -24,8 +24,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pipers/static/js/3.33ee410f.chunk.js"
   },
   {
-    "revision": "fdbd34ff61d0c4b2c2f4",
-    "url": "/pipers/static/js/main.34c321ee.chunk.js"
+    "revision": "cb0269c82e5920a17c35",
+    "url": "/pipers/static/js/main.349753cf.chunk.js"
   },
   {
     "revision": "16270adee2cb0097e5b2",
