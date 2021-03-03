@@ -10,7 +10,8 @@ main() {
     rm -rf "${PIPERS_HOME}/pkg" &>/dev/null || true
     rm -rf "${PIPERS_HOME}/web/pkg" &>/dev/null || true
     rm -rf "${PIPERS_HOME}/wasm/pkg" &>/dev/null || true
-    # rm -rf "${PIPERS_HOME}/web/node_modules" &>/dev/null || true
+    rm -rf "${PIPERS_HOME}/web/node_modules/pipers" &>/dev/null || true
+    mkdir -p "${PIPERS_HOME}/web/node_modules" &>/dev/null || true
 
     rm "${PIPERS_HOME}/wasm/lib.rs.bk" &>/dev/null || true
     cp "${PIPERS_HOME}/wasm/src/lib.rs" "${PIPERS_HOME}/wasm/lib.rs.bk"
@@ -22,6 +23,10 @@ main() {
 
     cd "${PIPERS_HOME}/wasm"
     wasm-pack build # --target web
+
+    cp -r "${PIPERS_HOME}/wasm/pkg" "${PIPERS_HOME}/pkg"
+    cp -r "${PIPERS_HOME}/wasm/pkg" "${PIPERS_HOME}/web/pkg"
+    cp -r "${PIPERS_HOME}/wasm/pkg" "${PIPERS_HOME}/web/node_modules/pipers"
 }
 
 main "$@"

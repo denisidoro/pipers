@@ -24,6 +24,6 @@ name = "pipers"
 path = "src/lib.rs"
 
 [[bin]]
-name = "pipers"
+name = "pipersj"
 path = "src/bin/main.rs"
 bench = false

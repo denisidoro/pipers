@@ -9,7 +9,7 @@ main() {
 
     cd "${PIPERS_HOME}/web"
     yarn install 
-    yarn start
+    yarn run deploy
 }
 
 main "$@"

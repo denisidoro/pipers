@@ -2,6 +2,19 @@ import React, { Component, useState, useCallback, useEffect } from "react";
 import { MainContext, useValue, useMainContext } from './hooks/context'
 
 const exprs = [
+  ["example", "make queries more readable", `cpuSeconds = node_cpu_seconds_total
+  | x -> x{instance=~"$node:$port",job=~"$job"}
+
+cpuCount = cpuSeconds 
+  | s -> count(s) by (cpu)
+  | count
+
+cpuIdle = cpuSeconds
+  | s -> s{mode='idle'}[5m]
+  | irate
+  | sum
+
+cpuIdle / cpuCount`],
   ["simple pipe", "pipes will turn into parentheses", "42 | f"],
   ["input as first arg", "for functions with multiple args, the input will be passed as the first one", "42 | f | g(3) | h"],
   ["input as last arg", "if you want to determine the arg position, use the x -> syntax", "42 | f | x -> g(3, x) | h"],
@@ -63,6 +76,9 @@ function Header() {
       <h1>Pipers</h1>
       <p>
         Use pipe expressions in your PromQL queries and more!
+      </p>
+      <p>
+        Check the <a href="https://github.com/denisidoro/pipers">Github repo</a> for more info!
       </p>
     </div>
   )
