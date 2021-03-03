@@ -3,11 +3,11 @@
 Use pipe expressions in your PromQL queries or code!
 
 For example, the following query...
-```promql
+```coffee
 sum(irate(node_cpu_seconds_total{instance=~"$node:$port",job=~"$job"}(node_cpu_seconds_total){mode='idle'}[5m](node_cpu_seconds_total{instance=~"$node:$port",job=~"$job"}(node_cpu_seconds_total)))) / count(count(node_cpu_seconds_total{instance=~"$node:$port",job=~"$job"}(node_cpu_seconds_total)) by (cpu))
 ```
 ...can be written as:
-```promql
+```coffee
 cpuSeconds = node_cpu_seconds_total
   | x -> x{instance=~"$node:$port",job=~"$job"}
 
